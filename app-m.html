@@ -1,0 +1,49 @@
+<script>
+    let todos = [];
+    let duration = '';
+    
+    function timeit(fn) {
+        let start = performance.now()
+        fn();
+        let end = performance.now()
+        let diff = end - start
+        setTimeout(() => {
+            duration += ' + ' + diff.toFixed(2) + 'ms ';
+        }, 10);
+    };
+
+    function test() {
+        timeit(() => {
+            todos.length = 0;
+            for(let i=0;i<5000;i++) {
+                todos.push({
+                    name: '' + i,
+                    done: false
+                });
+            }
+        });
+    }
+
+    function remove(todo) {
+        timeit(() => {
+            todos.splice(todos.indexOf(todo), 1);
+        });
+    }
+
+    function select(todo) {
+        console.log(todo);
+    }
+</script>
+
+<button on:click={test()}>Test</button>
+[ {duration} ]
+
+<ul>
+    {#each todos as todo }
+    <li>
+        <input type="checkbox" bind:checked={todo.done} />
+        <span on:click={select(todo)} class:inactive={todo.done} style="cursor: pointer;">{todo.name}</span>
+        <a href on:click|preventDefault={remove(todo)}>[x]</a>
+    </li>
+    {/each}
+</ul>
