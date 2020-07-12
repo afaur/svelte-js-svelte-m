@@ -3,13 +3,17 @@
     let duration = '';
     
     function timeit(fn) {
-        let start = performance.now()
+        let loadStart = performance.now()
         fn();
-        let end = performance.now()
-        let diff = end - start
-        setTimeout(() => {
-            duration += ' + ' + diff.toFixed(2) + 'ms ';
-        }, 10);
+        let loadEnd = performance.now()
+        let load = loadEnd - loadStart
+        requestAnimationFrame(() => {
+            let paintEnd = performance.now()
+            let paint = paintEnd - loadEnd
+            duration += ' + '
+            duration += 'Load: ' + load.toFixed(2) + 'ms , ';
+            duration += 'Paint: ' + paint.toFixed(2) + 'ms ';
+        });
     };
 
     function test() {

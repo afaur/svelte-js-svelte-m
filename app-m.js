@@ -134,14 +134,18 @@
         let duration = '';
         function timeit(fn) {
             $$apply();
-            let start = performance.now();
+            let loadStart = performance.now();
             fn();
-            let end = performance.now();
-            let diff = end - start;
-            setTimeout(() => {
+            let loadEnd = performance.now();
+            let load = loadEnd - loadStart;
+            requestAnimationFrame(() => {
                 $$apply();
-                duration += ' + ' + diff.toFixed(2) + 'ms ';
-            }, 10);
+                let paintEnd = performance.now();
+                let paint = paintEnd - loadEnd;
+                duration += ' + ';
+                duration += 'Load: ' + load.toFixed(2) + 'ms , ';
+                duration += 'Paint: ' + paint.toFixed(2) + 'ms ';
+            });
         }
         function test() {
             $$apply();

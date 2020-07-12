@@ -438,323 +438,324 @@ var app = (function () {
     const file = "src/App.svelte";
 
     function get_each_context(ctx, list, i) {
-      const child_ctx = ctx.slice();
-      child_ctx[9] = list[i];
-      child_ctx[10] = list;
-      child_ctx[11] = i;
-      return child_ctx;
+    	const child_ctx = ctx.slice();
+    	child_ctx[9] = list[i];
+    	child_ctx[10] = list;
+    	child_ctx[11] = i;
+    	return child_ctx;
     }
 
-    // (45:4) {#each todos as todo, i (todo) }
+    // (48:4) {#each todos as todo, i (todo) }
     function create_each_block(key_1, ctx) {
-      let li;
-      let input;
-      let t0;
-      let span;
-      let t1_value = /*todo*/ ctx[9].name + "";
-      let t1;
-      let t2;
-      let a;
-      let t4;
-      let mounted;
-      let dispose;
+    	let li;
+    	let input;
+    	let t0;
+    	let span;
+    	let t1_value = /*todo*/ ctx[9].name + "";
+    	let t1;
+    	let t2;
+    	let a;
+    	let t4;
+    	let mounted;
+    	let dispose;
 
-      function input_change_handler() {
-        /*input_change_handler*/ ctx[5].call(input, /*each_value*/ ctx[10], /*i*/ ctx[11]);
-      }
+    	function input_change_handler() {
+    		/*input_change_handler*/ ctx[5].call(input, /*each_value*/ ctx[10], /*i*/ ctx[11]);
+    	}
 
-      function click_handler_1(...args) {
-        return /*click_handler_1*/ ctx[6](/*todo*/ ctx[9], ...args);
-      }
+    	function click_handler_1(...args) {
+    		return /*click_handler_1*/ ctx[6](/*todo*/ ctx[9], ...args);
+    	}
 
-      function click_handler_2(...args) {
-        return /*click_handler_2*/ ctx[7](/*todo*/ ctx[9], /*i*/ ctx[11], ...args);
-      }
+    	function click_handler_2(...args) {
+    		return /*click_handler_2*/ ctx[7](/*todo*/ ctx[9], /*i*/ ctx[11], ...args);
+    	}
 
-      const block = {
-        key: key_1,
-        first: null,
-        c: function create() {
-          li = element("li");
-          input = element("input");
-          t0 = space();
-          span = element("span");
-          t1 = text(t1_value);
-          t2 = space();
-          a = element("a");
-          a.textContent = "[x]";
-          t4 = space();
-          attr_dev(input, "type", "checkbox");
-          add_location(input, file, 46, 8, 1064);
-          set_style(span, "cursor", "pointer");
-          attr_dev(span, "class", "svelte-1mmqod7");
-          toggle_class(span, "inactive", /*todo*/ ctx[9].done);
-          add_location(span, file, 47, 8, 1123);
-          attr_dev(a, "href", "");
-          add_location(a, file, 48, 8, 1238);
-          add_location(li, file, 45, 4, 1051);
-          this.first = li;
-        },
-        m: function mount(target, anchor) {
-          insert_dev(target, li, anchor);
-          append_dev(li, input);
-          input.checked = /*todo*/ ctx[9].done;
-          append_dev(li, t0);
-          append_dev(li, span);
-          append_dev(span, t1);
-          append_dev(li, t2);
-          append_dev(li, a);
-          append_dev(li, t4);
+    	const block = {
+    		key: key_1,
+    		first: null,
+    		c: function create() {
+    			li = element("li");
+    			input = element("input");
+    			t0 = space();
+    			span = element("span");
+    			t1 = text(t1_value);
+    			t2 = space();
+    			a = element("a");
+    			a.textContent = "[x]";
+    			t4 = space();
+    			attr_dev(input, "type", "checkbox");
+    			add_location(input, file, 49, 8, 1203);
+    			set_style(span, "cursor", "pointer");
+    			attr_dev(span, "class", "svelte-1mmqod7");
+    			toggle_class(span, "inactive", /*todo*/ ctx[9].done);
+    			add_location(span, file, 50, 8, 1262);
+    			attr_dev(a, "href", "");
+    			add_location(a, file, 51, 8, 1377);
+    			add_location(li, file, 48, 4, 1190);
+    			this.first = li;
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, li, anchor);
+    			append_dev(li, input);
+    			input.checked = /*todo*/ ctx[9].done;
+    			append_dev(li, t0);
+    			append_dev(li, span);
+    			append_dev(span, t1);
+    			append_dev(li, t2);
+    			append_dev(li, a);
+    			append_dev(li, t4);
 
-          if (!mounted) {
-            dispose = [
-              listen_dev(input, "change", input_change_handler),
-              listen_dev(span, "click", click_handler_1, false, false, false),
-              listen_dev(a, "click", prevent_default(click_handler_2), false, true, false)
-            ];
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(input, "change", input_change_handler),
+    					listen_dev(span, "click", click_handler_1, false, false, false),
+    					listen_dev(a, "click", prevent_default(click_handler_2), false, true, false)
+    				];
 
-            mounted = true;
-          }
-        },
-        p: function update(new_ctx, dirty) {
-          ctx = new_ctx;
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
 
-          if (dirty & /*todos*/ 1) {
-            input.checked = /*todo*/ ctx[9].done;
-          }
+    			if (dirty & /*todos*/ 1) {
+    				input.checked = /*todo*/ ctx[9].done;
+    			}
 
-          if (dirty & /*todos*/ 1 && t1_value !== (t1_value = /*todo*/ ctx[9].name + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*todos*/ 1 && t1_value !== (t1_value = /*todo*/ ctx[9].name + "")) set_data_dev(t1, t1_value);
 
-          if (dirty & /*todos*/ 1) {
-            toggle_class(span, "inactive", /*todo*/ ctx[9].done);
-          }
-        },
-        d: function destroy(detaching) {
-          if (detaching) detach_dev(li);
-          mounted = false;
-          run_all(dispose);
-        }
-      };
+    			if (dirty & /*todos*/ 1) {
+    				toggle_class(span, "inactive", /*todo*/ ctx[9].done);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(li);
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
 
-      dispatch_dev("SvelteRegisterBlock", {
-        block,
-        id: create_each_block.name,
-        type: "each",
-        source: "(45:4) {#each todos as todo, i (todo) }",
-        ctx
-      });
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(48:4) {#each todos as todo, i (todo) }",
+    		ctx
+    	});
 
-      return block;
+    	return block;
     }
 
     function create_fragment(ctx) {
-      let button;
-      let t1;
-      let t2;
-      let t3;
-      let ul;
-      let each_blocks = [];
-      let each_1_lookup = new Map();
-      let mounted;
-      let dispose;
-      let each_value = /*todos*/ ctx[0];
-      validate_each_argument(each_value);
-      const get_key = ctx => /*todo*/ ctx[9];
-      validate_each_keys(ctx, each_value, get_each_context, get_key);
+    	let button;
+    	let t1;
+    	let t2;
+    	let t3;
+    	let ul;
+    	let each_blocks = [];
+    	let each_1_lookup = new Map();
+    	let mounted;
+    	let dispose;
+    	let each_value = /*todos*/ ctx[0];
+    	validate_each_argument(each_value);
+    	const get_key = ctx => /*todo*/ ctx[9];
+    	validate_each_keys(ctx, each_value, get_each_context, get_key);
 
-      for (let i = 0; i < each_value.length; i += 1) {
-        let child_ctx = get_each_context(ctx, each_value, i);
-        let key = get_key(child_ctx);
-        each_1_lookup.set(key, each_blocks[i] = create_each_block(key, child_ctx));
-      }
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		let child_ctx = get_each_context(ctx, each_value, i);
+    		let key = get_key(child_ctx);
+    		each_1_lookup.set(key, each_blocks[i] = create_each_block(key, child_ctx));
+    	}
 
-      const block = {
-        c: function create() {
-          button = element("button");
-          button.textContent = "Test";
-          t1 = text("\n[ ");
-          t2 = text(/*duration*/ ctx[1]);
-          t3 = text(" ]\n\n");
-          ul = element("ul");
+    	const block = {
+    		c: function create() {
+    			button = element("button");
+    			button.textContent = "Test";
+    			t1 = text("\n[ ");
+    			t2 = text(/*duration*/ ctx[1]);
+    			t3 = text(" ]\n\n");
+    			ul = element("ul");
 
-          for (let i = 0; i < each_blocks.length; i += 1) {
-            each_blocks[i].c();
-          }
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
 
-          add_location(button, file, 40, 0, 943);
-          add_location(ul, file, 43, 0, 1005);
-        },
-        l: function claim(nodes) {
-          throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-        },
-        m: function mount(target, anchor) {
-          insert_dev(target, button, anchor);
-          insert_dev(target, t1, anchor);
-          insert_dev(target, t2, anchor);
-          insert_dev(target, t3, anchor);
-          insert_dev(target, ul, anchor);
+    			add_location(button, file, 43, 0, 1082);
+    			add_location(ul, file, 46, 0, 1144);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, button, anchor);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, t2, anchor);
+    			insert_dev(target, t3, anchor);
+    			insert_dev(target, ul, anchor);
 
-          for (let i = 0; i < each_blocks.length; i += 1) {
-            each_blocks[i].m(ul, null);
-          }
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(ul, null);
+    			}
 
-          if (!mounted) {
-            dispose = listen_dev(button, "click", /*click_handler*/ ctx[4], false, false, false);
-            mounted = true;
-          }
-        },
-        p: function update(ctx, [dirty]) {
-          if (dirty & /*duration*/ 2) set_data_dev(t2, /*duration*/ ctx[1]);
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*click_handler*/ ctx[4], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*duration*/ 2) set_data_dev(t2, /*duration*/ ctx[1]);
 
-          if (dirty & /*remove, todos, select*/ 9) {
-            const each_value = /*todos*/ ctx[0];
-            validate_each_argument(each_value);
-            validate_each_keys(ctx, each_value, get_each_context, get_key);
-            each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, ul, destroy_block, create_each_block, null, get_each_context);
-          }
-        },
-        i: noop,
-        o: noop,
-        d: function destroy(detaching) {
-          if (detaching) detach_dev(button);
-          if (detaching) detach_dev(t1);
-          if (detaching) detach_dev(t2);
-          if (detaching) detach_dev(t3);
-          if (detaching) detach_dev(ul);
+    			if (dirty & /*remove, todos, select*/ 9) {
+    				const each_value = /*todos*/ ctx[0];
+    				validate_each_argument(each_value);
+    				validate_each_keys(ctx, each_value, get_each_context, get_key);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, ul, destroy_block, create_each_block, null, get_each_context);
+    			}
+    		},
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(button);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(t3);
+    			if (detaching) detach_dev(ul);
 
-          for (let i = 0; i < each_blocks.length; i += 1) {
-            each_blocks[i].d();
-          }
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].d();
+    			}
 
-          mounted = false;
-          dispose();
-        }
-      };
+    			mounted = false;
+    			dispose();
+    		}
+    	};
 
-      dispatch_dev("SvelteRegisterBlock", {
-        block,
-        id: create_fragment.name,
-        type: "component",
-        source: "",
-        ctx
-      });
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
 
-      return block;
+    	return block;
     }
 
     function select(todo) {
-      console.log(todo);
+    	console.log(todo);
     }
 
     function instance($$self, $$props, $$invalidate) {
-      let todos = [];
-      let duration = "";
+    	let todos = [];
+    	let duration = "";
 
-      function timeit(fn) {
-        let start = performance.now();
-        fn();
-        let end = performance.now();
-        let diff = end - start;
+    	function timeit(fn) {
+    		let loadStart = performance.now();
+    		fn();
+    		let loadEnd = performance.now();
+    		let load = loadEnd - loadStart;
 
-        setTimeout(
-          () => {
-            $$invalidate(1, duration += " + " + diff.toFixed(2) + "ms ");
-          },
-          10
-        );
-      }
+    		requestAnimationFrame(() => {
+    			let paintEnd = performance.now();
+    			let paint = paintEnd - loadEnd;
+    			$$invalidate(1, duration += " + ");
+    			$$invalidate(1, duration += "Load: " + load.toFixed(2) + "ms , ");
+    			$$invalidate(1, duration += "Paint: " + paint.toFixed(2) + "ms ");
+    		});
+    	}
 
-      
+    	
 
-      function test() {
-        timeit(() => {
-          $$invalidate(0, todos.length = 0, todos);
+    	function test() {
+    		timeit(() => {
+    			$$invalidate(0, todos.length = 0, todos);
 
-          for (let i = 0; i < 5000; i++) {
-            todos.push({ name: "" + i, done: false });
-          }
+    			for (let i = 0; i < 5000; i++) {
+    				todos.push({ name: "" + i, done: false });
+    			}
 
-          $$invalidate(0, todos);
-        });
-      }
+    			$$invalidate(0, todos);
+    		});
+    	}
 
-      function remove(todo, i) {
-        timeit(() => {
-          todos.splice(todos.indexOf(todo), 1);
+    	function remove(todo, i) {
+    		timeit(() => {
+    			todos.splice(todos.indexOf(todo), 1);
+    			$$invalidate(0, todos);
+    		});
+    	}
 
-          $$invalidate(0, todos);
-        });
-      }
+    	const writable_props = [];
 
-      const writable_props = [];
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<App> was created with unknown prop '${key}'`);
+    	});
 
-      Object.keys($$props).forEach(key => {
-        if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<App> was created with unknown prop '${key}'`);
-      });
+    	let { $$slots = {}, $$scope } = $$props;
+    	validate_slots("App", $$slots, []);
+    	const click_handler = () => test();
 
-      let { $$slots = {}, $$scope } = $$props;
-      validate_slots("App", $$slots, []);
-      const click_handler = () => test();
+    	function input_change_handler(each_value, i) {
+    		each_value[i].done = this.checked;
+    		$$invalidate(0, todos);
+    	}
 
-      function input_change_handler(each_value, i) {
-        each_value[i].done = this.checked;
-        $$invalidate(0, todos);
-      }
+    	const click_handler_1 = todo => select(todo);
+    	const click_handler_2 = (todo, i) => remove(todo);
 
-      const click_handler_1 = todo => select(todo);
-      const click_handler_2 = (todo, i) => remove(todo);
+    	$$self.$capture_state = () => ({
+    		todos,
+    		duration,
+    		timeit,
+    		test,
+    		remove,
+    		select
+    	});
 
-      $$self.$capture_state = () => ({
-        todos,
-        duration,
-        timeit,
-        test,
-        remove,
-        select
-      });
+    	$$self.$inject_state = $$props => {
+    		if ("todos" in $$props) $$invalidate(0, todos = $$props.todos);
+    		if ("duration" in $$props) $$invalidate(1, duration = $$props.duration);
+    	};
 
-      $$self.$inject_state = $$props => {
-        if ("todos" in $$props) $$invalidate(0, todos = $$props.todos);
-        if ("duration" in $$props) $$invalidate(1, duration = $$props.duration);
-      };
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
 
-      if ($$props && "$$inject" in $$props) {
-        $$self.$inject_state($$props.$$inject);
-      }
-
-      return [
-        todos,
-        duration,
-        test,
-        remove,
-        click_handler,
-        input_change_handler,
-        click_handler_1,
-        click_handler_2
-      ];
+    	return [
+    		todos,
+    		duration,
+    		test,
+    		remove,
+    		click_handler,
+    		input_change_handler,
+    		click_handler_1,
+    		click_handler_2
+    	];
     }
 
     class App extends SvelteComponentDev {
-      constructor(options) {
-        super(options);
-        init(this, options, instance, create_fragment, safe_not_equal, {});
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance, create_fragment, safe_not_equal, {});
 
-        dispatch_dev("SvelteRegisterComponent", {
-          component: this,
-          tagName: "App",
-          options,
-          id: create_fragment.name
-        });
-      }
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "App",
+    			options,
+    			id: create_fragment.name
+    		});
+    	}
     }
 
     const app = new App({
-      target: document.body,
-      props: {
-        name: 'world'
-      }
+    	target: document.body,
+    	props: {
+    		name: 'world'
+    	}
     });
 
     return app;
 
 }());
+//# sourceMappingURL=bundle.js.map
